@@ -1,6 +1,10 @@
 ---
-- name: Copy nvim config
-  ansible.builtin.copy:
-    src: ./files/nvim
-    dest: ${HOME}/.config/
+- name: Copy dotfiles config
+  copy:
+    src: ./files/dotfiles/
+    dest: ${HOME}/.dotfiles
+    mode: preserve
+
+- name: Stow dotfiles
+  shell: cd ${HOME}/.dotfiles && ./install
 
