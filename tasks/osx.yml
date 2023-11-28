@@ -1,0 +1,4 @@
+---
+- name: Run osx_script
+  command: "{{ osx_script }}"
+
