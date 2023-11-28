@@ -18,6 +18,7 @@
 
     homebrew_cask_apps:
       - angry-ip-scanner
+      - daisydisk
       - dbeaver-community
       - fork
         #- google-chrome
@@ -26,17 +27,18 @@
       - monitorcontrol
       - obs
       - obsidian
+      - raycast # App launcher similar to Spotlight
       - rectangle # Move windows around
       - shottr # Better screenshot tool
       - warp
 
     homebrew_uninstalled_packages: []
 
-    tasks:
-      - import_tasks: tasks/osx.yml
-      - import_tasks: tasks/shell.yml
+  tasks:
+    - import_tasks: tasks/osx.yml
+    - import_tasks: tasks/shell.yml
 
-    roles:
-      - geerlingguy.mac.homebrew
-      - geerlingguy.mac.mas
+  roles:
+    - geerlingguy.mac.homebrew
+    - geerlingguy.mac.mas
 
