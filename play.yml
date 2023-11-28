@@ -11,9 +11,13 @@
       - { id: 571213070, name: "DaVinci Resolve" }
 
     homebrew_installed_packages:
-      - neovim
-      - ripgrep
       - fzf
+      - jdtls
+      - kotlin-language-server
+      - neovim
+      - rbenv # Ruby manager
+      - ripgrep
+      - stow
 
     homebrew_cask_apps:
       - angry-ip-scanner
