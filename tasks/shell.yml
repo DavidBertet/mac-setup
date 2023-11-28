@@ -1,0 +1,14 @@
+---
+- name: Copy nvim config
+  ansible.builtin.copy:
+    src: ./files/nvim
+    dest: ${HOME}/.config/
+
+- name: Clone Packer
+  git:
+    clone: true
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+- name: Run PackerSync
+  shell: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

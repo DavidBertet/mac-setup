@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+
+  vars:
+    osx_script: ./files/osx.sh
+
+    mas_installed_apps:
+      - { id: 405843582, name: "Alfred" }
+      - { id: 1287239339, name: "ColorSlurp" }
+      - { id: 571213070, name: "DaVinci Resolve" }
+
+    homebrew_installed_packages:
+      - neovim
+      - ripgrep
+      - fzf
+
+    homebrew_cask_apps:
+      - angry-ip-scanner
+      - dbeaver-community
+      - fork
+        #- google-chrome
+      - handbrake # Video compression
+      - latest # Keep app updated
+      - monitorcontrol
+      - obs
+      - obsidian
+      - rectangle # Move windows around
+      - shottr # Better screenshot tool
+      - warp
+
+    homebrew_uninstalled_packages: []
+
+    tasks:
+      - import_tasks: tasks/osx.yml
+      - import_tasks: tasks/shell.yml
+
+    roles:
+      - geerlingguy.mac.homebrew
+      - geerlingguy.mac.mas
+
