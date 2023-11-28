@@ -7,7 +7,6 @@
     osx_script: ./files/osx.sh
 
     mas_installed_apps:
-      - { id: 405843582, name: "Alfred" }
       - { id: 1287239339, name: "ColorSlurp" }
       - { id: 571213070, name: "DaVinci Resolve" }
 
