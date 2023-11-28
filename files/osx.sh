@@ -6,18 +6,6 @@
 #sudo scutil --set LocalHostName "mbp"
 #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "mbp"
 
-# Disable auto correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-# Disable smart quotes
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-# Disable smart dashes
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-# Disable automatic capitalization
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-# Set a fast keyboard repeat rate, and make it happen more quickly.
-defaults write NSGlobalDomain InitialKeyRepeat -int 20
-defaults write NSGlobalDomain KeyRepeat -int 1
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -58,6 +46,12 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0.1
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
+# Expand save panel 1 by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# Expand save panel 2 by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
 # Enable snap-to-grid for icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -76,7 +70,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 chflags nohidden ~/Library
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Dock, Dashboard, Screensaver and hot corners                                #
 ###############################################################################
 
 # Automatically hide and show the Dock
@@ -84,6 +78,18 @@ defaults write com.apple.dock autohide -bool true
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
+
+# Remove all dock icons
+defaults write com.apple.dock persistent-apps -array ""
+
+# Set Dock size
+defaults write com.apple.dock titlesize -int 43
+
+# Set screensaver password timeout
+defaults write com.apple.screensaver askForPassword -int 1
+
+# Set screensaver password delay
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Hot corners
 # Possible values:
@@ -97,9 +103,44 @@ defaults write com.apple.dock show-recents -bool false
 # 10: Put display to sleep
 # 11: Launchpad
 # 12: Notification Center
+
 # Top left screen corner → Put display to sleep
-# defaults write com.apple.dock wvous-tl-corner -int 10
-# defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-tl-corner -int 10
+defaults write com.apple.dock wvous-tl-modifier -int 0
+
+###############################################################################
+# Input devices                                                               #
+###############################################################################
+
+# Disable auto correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# Disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+# Disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# Set a fast keyboard repeat rate, and make it happen more quickly.
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+# Disable scroll natural direction
+defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -int 0
+
+# Configure builtin Apple trackpad - tap-to-click
+defaults write com.apple.AppleMultitouchtrackpad Clicking -int 1
+
+# Configure builtin Apple trackpad - 2 finger tap right-click
+defaults write com.apple.AppleMultitouchtrackpad trackpadRightClick -int 1
+
+# Configure builtin Apple trackpad - pinch to zoom
+defaults write com.apple.AppleMultitouchtrackpad trackpadPinch -int 1
+
+# Configure Apple mouse - tap-to-click
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -bool true
+
+# Configure Apple mouse - 2 finger swipe
+defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -116,6 +157,9 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
+# Show full URL
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
@@ -127,10 +171,13 @@ defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
 ###############################################################################
-# Photots
+# Others
 ###############################################################################
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+# Show Xcode Build Durations
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
 echo "Restart macbook in order to finalize settings"
