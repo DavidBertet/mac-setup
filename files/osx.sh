@@ -13,7 +13,7 @@
 # Set screencapture folder to Downloads
 defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "jpg"
+defaults write com.apple.screencapture type -string "JPG"
 
 ###############################################################################
 # Finder                                                                      #
@@ -79,8 +79,11 @@ defaults write com.apple.dock autohide -bool true
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
+# Prevent apps from staying in dock
+defaults write com.apple.dock static-only -bool true
+
 # Remove all dock icons
-defaults write com.apple.dock persistent-apps -array ""
+defaults delete com.apple.dock persistent-apps
 
 # Set Dock size
 defaults write com.apple.dock titlesize -int 43
@@ -121,11 +124,11 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 # Set a fast keyboard repeat rate, and make it happen more quickly.
-defaults write NSGlobalDomain InitialKeyRepeat -int 20
+defaults write NSGlobalDomain InitialKeyRepeat -int 2
 defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Disable scroll natural direction
-defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -int 0
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Configure builtin Apple trackpad - tap-to-click
 defaults write com.apple.AppleMultitouchtrackpad Clicking -int 1
@@ -137,7 +140,7 @@ defaults write com.apple.AppleMultitouchtrackpad trackpadRightClick -int 1
 defaults write com.apple.AppleMultitouchtrackpad trackpadPinch -int 1
 
 # Configure Apple mouse - tap-to-click
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -bool true
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Configure Apple mouse - 2 finger swipe
 defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
@@ -174,10 +177,12 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Others
 ###############################################################################
 
+# Dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 # Show Xcode Build Durations
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
-echo "Restart macbook in order to finalize settings"
