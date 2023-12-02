@@ -10,6 +10,7 @@ install: req-galaxy ## Install roles via ansible-galaxy
 configure: req-playbook ## Run ansible
 	@echo "Run ansible-playbook"
 	ansible-playbook play.yml -K
+	@echo ">>> Restart your Mac in order to finalize the settings <<<"
 
 req-galaxy:
 	@command -v ansible-galaxy >/dev/null 2>&1 || { echo >&2 "require ansible-galaxy"; exit 1; }

@@ -21,8 +21,10 @@
 
     homebrew_cask_apps:
       - angry-ip-scanner
+      - cyberduck
       - daisydisk
       - dbeaver-community
+      - discord
       - fork
         #- google-chrome
       - handbrake # Video compression
@@ -30,9 +32,13 @@
       - monitorcontrol
       - obs
       - obsidian
+      - prusaslicer # Slicer for 3D printers
       - raycast # App launcher similar to Spotlight
       - rectangle # Move windows around
+      - slack
       - shottr # Better screenshot tool
+      - spotify
+      - visual-studio-code
       - warp
 
     homebrew_uninstalled_packages: []
