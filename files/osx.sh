@@ -123,6 +123,8 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# Disable adding period after 2 spaces
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Set a fast keyboard repeat rate, and make it happen more quickly.
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 1
